@@ -15,7 +15,7 @@ router.post('/', function(req, res, next){
 		if(err)
 			return res.send(err);
 		if(req.body.password == users[0].password){
-			res.render('stu_fac');
+			res.render('stu_fac', {data:users[0]});
 		}
 		else{
 			res.sendFile(path.join(__dirname, '../public/login.html'));

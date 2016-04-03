@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Book List Page</title>
-
-	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+	<title>Book Issued</title>
+	<script src="https://code.jquery.com/jquery-2.2.2.min.js" type="text/javascript" charset="utf-8" async defer></script>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -16,30 +15,15 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="row">
-		<h2><label for="Book-list">Book List</label></h2>
-	</div>
+	
 	<div class="row">
-		<table class="table table-bordered" style="margin:0px auto; width:600px" align="center">
-			<thead>
-				<tr>
-					<th>Book ISBN</th>
-					<th>Book Name </th>
-					<th>Book Author</th>
-				</tr>
-			</thead>
-			<tbody>
-			<% data.forEach(function(data){%>
-				<tr>
-					<td><%data.ISBN%></td>
-					<td><%data.bookname%></td>
-					<td><%data.authorname%></td>
-				</tr>
-				
-				<%});%>
-			</tbody>
-		</table>
+		<h2><label>Book Issued</label></h2>
 	</div>
+	<div class="row"><label for="id">#BookName</label></div>
+	<div class="row"><label for="id">#Isbn</label></div>
+	<div class="row"><label for="branch">#Auther</label></div>
+	<div class="row"><label for="id">#Issued Date</label></div>
+	<div class="row"><label for="branch">you hava to submit till #Deadline</label></div>
 
 </body>
 </html>

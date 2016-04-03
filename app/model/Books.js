@@ -7,4 +7,4 @@ var bookSchema = new Schema({
 	publisher:String,
 	numofcopies:Number
 });
-module.exports = mongoose.model('Bser',userSchema);
+module.exports = mongoose.model('Book',bookSchema);

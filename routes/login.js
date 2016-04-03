@@ -14,6 +14,7 @@ router.post('/', function(req, res, next){
 	user.find({email:req.body.email}, function(err,users){
 		if(err)
 			return res.send(err);
+		console.log(users[0]);
 		if(req.body.password == users[0].password){
 			if(users[0].role=="admin")
 				res.render('Admin', {data:users[0]});

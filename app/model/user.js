@@ -8,10 +8,10 @@ var userSchema = new Schema({
 	username:{type:String, index: {unique:true}},
 	password:String,
 	role:String,
-	book: {
+	book: [{
 		bookname: String,
 		issueddate:Date
-	}
+	}]
 
 });
 module.exports = mongoose.model('User',userSchema);

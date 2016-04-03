@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Admin Form</title>
+	<title>New Book</title>
 	<script src="https://code.jquery.com/jquery-2.2.2.min.js" type="text/javascript" charset="utf-8" async defer></script>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -19,10 +19,10 @@
 	<div class="row">
 		<h2><label>New Books</label></h2>
 	</div>
-	<div class="row"><label for="id">#BookName</label></div>
-	<div class="row"><label for="id">#Isbn</label></div>
-	<div class="row"><label for="branch">#Auther</label></div>
-	<div class="row"><label for="id">#No of copies</label></div>
+	<div class="row"><label for="id"><%= data.bookname %></label></div>
+	<div class="row"><label for="id"><%= data.ISBN %></label></div>
+	<div class="row"><label for="branch"><%= data.authorname %></label></div>
+	<div class="row"><label for="id"><%= data.numofcopies %></label></div>
 	
 
 </body>

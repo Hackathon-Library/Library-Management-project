@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home Page</title>
+	<title>Book List Page</title>
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
 	<!-- Latest compiled and minified CSS -->
@@ -29,21 +29,14 @@
 				</tr>
 			</thead>
 			<tbody>
+			<% data.forEach(function(data){%>
 				<tr>
-					<td>1234</td>
-					<td>5678</td>
-					<td>8910</td>
+					<td><%data.ISBN%></td>
+					<td><%data.bookname%></td>
+					<td><%data.authorname%></td>
 				</tr>
-				<tr>
-					<td>Stories</td>
-					<td>Jokes</td>
-					<td>Literature</td>
-				</tr>
-				<tr>
-					<td>July</td>
-					<td>Dooley</td>
-					<td>Mary</td>
-				</tr>
+				
+				<%});%>
 			</tbody>
 		</table>
 	</div>

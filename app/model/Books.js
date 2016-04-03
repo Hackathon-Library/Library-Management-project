@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bookSchema = new Schema({
-	name:String,
+	bookname:String,
 	ISBN:Number,
 	authorname:String,
 	publisher:String,
 	numofcopies:Number
 });
-module.exports = mongoose.model('Bser',userSchema);
+module.exports = mongoose.model('Book',bookSchema);

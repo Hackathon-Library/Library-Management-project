@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
+var bookschema = require('./Books');
 var Schema = mongoose.Schema;
+
 var userSchema = new Schema({
 	name:String,
 	rollno:Number,
@@ -8,10 +10,11 @@ var userSchema = new Schema({
 	username:{type:String, index: {unique:true}},
 	password:String,
 	role:String,
-	book: [{
-		bookname: String,
-		issueddate:Date
-	}]
+	books: [
+		type:mongoose.Schema.Types.ObjectId,
+		ref: 'Book'
+	]
 
 });
+
 module.exports = mongoose.model('User',userSchema);

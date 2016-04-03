@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bookSchema = new Schema({
-	name:String,
+	bookname:String,
 	ISBN:Number,
 	authorname:String,
 	publisher:String,

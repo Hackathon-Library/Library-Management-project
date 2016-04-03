@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home Page</title>
+	<title>Student Faculty Page</title>
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
 	<!-- Latest compiled and minified CSS -->
@@ -24,9 +24,9 @@
 	<div class="row">
 	<div class="col-sm-12">
 	<div class="row">
-		<label for="name">Takshshila</label></div>
-		<div class="row"><label for="id">12586</label></div>
-		<div class="row"><label for="branch">CSE</label></div>
+		<label for="name"><%= data.name %></label></div>
+		<div class="row"><label for="id"><%= data.rollno %></label></div>
+		<div class="row"><label for="branch"><%= data.branch %></label></div>
 		
 		
 		
@@ -57,21 +57,13 @@
       </tr>
     </thead>
     <tbody>
+    <% data.forEach(function(data){%>
       <tr>
-        <td>John</td>
-        <td>Doe</td>
+        <td><%data.bookname%></td>
+        <td><%data.Deadline%></td>
        
       </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
- 
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-      
-      </tr>
+      </tr><%});%>
     </tbody>
   </table>
 </div>

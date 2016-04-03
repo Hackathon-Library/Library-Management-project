@@ -4,8 +4,8 @@ var userSchema = new Schema({
 	name:String,
 	rollno:Number,
 	branch:String,
-	email:{type:String, index: {unique:true}};
-	usernamw:{type:String, index: {unique:true}};
+	email:{type:String, index: {unique:true}},
+	username:{type:String, index: {unique:true}},
 	password:String,
 	role:String,
 	book: {

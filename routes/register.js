@@ -26,7 +26,7 @@ router.post('/', function(req, res, next){
 		}
 
 		// return a message
-		res.json({ message: 'User created!' });
+		res.send("<html><head><title>registered</title></head><body>User created<br /><a href='/'>back to login page</a></body></html>");
 	});
 });
 

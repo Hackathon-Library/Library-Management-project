@@ -24,7 +24,7 @@ router.post('/', function(req, res, next){
 		else{
 			res.sendFile(path.join(__dirname, '../public/login.html'));
 		}
+		mongoose.connection.close();
 	});
-	
 });
 module.exports = router;

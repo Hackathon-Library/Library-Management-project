@@ -21,33 +21,38 @@ router.post('/bookissue', function(req, res, next){
 			})
 			return res.send("Book have been issued");
 		}
+		mongoose.connection.close();
 	});
 });
 
 router.post('/newbook', function(req, res, next){
 	mongoose.connect('mongodb://user:user@ds015760.mlab.com:15760/librarymanagement');
-	var book = new Book();
+	var book = new Books();
 	book.name = req.body.bookname;
 	book.authorname = req.body.author;
 	book.ISBN = req.body.isbn;
+	book.numofcopies = req.body.copies;
 
-
-	book.save(function(err) {
-		if (err) {
-			// duplicate entry
-			if (err.code == 11000){
-				User.findOneAndUpdate({ book.name: 'req.body.bookname' }, { book.numofcopies: book.numofcopies + 1 }, function(err, user) {
-					if (err) throw err;
-				});
-
-			
-
-			else 
-				return res.send(err);
+	Books.findOne({isbn:req.body.isbn}, function(err,books) {
+		if(err) {
+			console.log(err);
+			return res.send(err);
 		}
-
-		// return a message
-		res.send("<html><head><title>registered</title></head><body>Book Added<br /><a href='/'>back to login page</a></body></html>");
+		if(books) {
+			books.numofcopies = books.numofcopies + req.body.copies;
+			books.save(function(err) {
+				if(err)
+					return res.end(err);
+				return res.end("Books entries have been updated");
+			});
+		}
+			
+		else {
+			book.save(function(err) {
+				return res.send("Book have been saved");
+			});
+		}
 	});
 });
+
 module.exports = router;

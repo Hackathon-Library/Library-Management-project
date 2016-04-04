@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-var mongoose = require('mongoose');
 var User = require('../app/model/user');
 
 /* GET home page. */
@@ -10,8 +9,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next){
-	mongoose.connection.close();
-	mongoose.connect('mongodb://user:user@ds015760.mlab.com:15760/librarymanagement');
 	var user = new User();
 	user.email = req.body.email;
 	user.username = req.body.username;

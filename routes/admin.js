@@ -1,12 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-var mongoose = require('mongoose');
 var Books = require('../app/model/Books')
 var User = require('../app/model/user');
 
 router.post('/bookissue', function(req, res, next){
-	mongoose.connect('mongodb://user:user@ds015760.mlab.com:15760/librarymanagement');
 	var rollno = req.body.rollno;
 
 	Books.findOne({ISBN:req.body.isbn}, function(err,book) {
@@ -33,25 +31,23 @@ router.post('/bookissue', function(req, res, next){
 					});
 			});
 		}
-		mongoose.connection.close();
 	});
 });
 
 router.post('/newbook', function(req, res, next){
-	mongoose.connect('mongodb://user:user@ds015760.mlab.com:15760/librarymanagement');
 	var book = new Books();
-	book.name = req.body.bookname;
+	book.bookname = req.body.bookname;
 	book.authorname = req.body.author;
 	book.ISBN = req.body.isbn;
 	book.numofcopies = req.body.copies;
 
-	Books.findOne({isbn:req.body.isbn}, function(err,books) {
+	Books.findOne({ISBN:req.body.isbn}, function(err,books) {
 		if(err) {
 			console.log(err);
 			return res.send(err);
 		}
 		if(books) {
-			books.numofcopies = books.numofcopies + req.body.copies;
+			books.numofcopies = Number(books.numofcopies) + Number(req.body.copies);
 			books.save(function(err) {
 				if(err)
 					return res.end(err);
@@ -67,7 +63,6 @@ router.post('/newbook', function(req, res, next){
 });
 
 router.post('/bookreturn', function(req, res, next){
-	mongoose.connect('mongodb://user:user@ds015760.mlab.com:15760/librarymanagement');
 
 	var rollnum  = req.body.rollno;
 	var isbnno = req.body.isbn;

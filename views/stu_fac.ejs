@@ -12,14 +12,12 @@
 
 	<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap/css/style.css">
 
-	
-
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div class="row">
-		<h2><label for="login-form">Welcome <%= data.name %></label></h2>
+		<h2><label for="login-form">Welcome <%= data.username %></label></h2>
 	</div>
 	<div class="row">
 	<div class="col-sm-12">
@@ -57,10 +55,10 @@
       </tr>
     </thead>
     <tbody>
-    <% data.forEach(function(data){%>
+    <% data.books.forEach(function(book){%>
       <tr>
-        <td><%data.bookname%></td>
-        <td><%data.Deadline%></td>
+        <td><%= data.bookname %></td>
+        <td><%= data.Deadline %></td>
        
       </tr>
       </tr><%});%>

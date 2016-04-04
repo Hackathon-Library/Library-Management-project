@@ -10,11 +10,16 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next){
+	mongoose.connection.close();
 	mongoose.connect('mongodb://user:user@ds015760.mlab.com:15760/librarymanagement');
 	var user = new User();
 	user.email = req.body.email;
 	user.username = req.body.username;
 	user.password = req.body.password;
+	user.name = req.body.name;
+	user.rollno = req.body.rollno;
+	user.branch = req.body.branch;
+	user.role = req.body.role;
 
 	user.save(function(err) {
 		if (err) {

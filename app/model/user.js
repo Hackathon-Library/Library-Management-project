@@ -10,10 +10,10 @@ var userSchema = new Schema({
 	username:{type:String, index: {unique:true}},
 	password:String,
 	role:String,
-	books: [
-		type:mongoose.Schema.Types.ObjectId,
+	books: [{
+		type:Schema.Types.ObjectId,
 		ref: 'Book'
-	]
+	}]
 
 });
 

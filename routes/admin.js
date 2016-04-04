@@ -9,7 +9,7 @@ router.post('/bookissue', function(req, res, next){
 	mongoose.connect('mongodb://user:user@ds015760.mlab.com:15760/librarymanagement');
 	var rollno = req.body.rollno;
 
-	Books.findOne({isbn:req.body.isbn}, function(err,book) {
+	Books.findOne({ISBN:req.body.isbn}, function(err,book) {
 		if(err) {
 			return res.send(err);
 		}
@@ -23,10 +23,13 @@ router.post('/bookissue', function(req, res, next){
 					user.books.push(book);
 					user.save(function(err) {
 						if(err)
-							return res.end("Cannot issue book");
-						return res.end("Book have been issued");
-						book.numofcopies = book.numofcopies - 1;
-						book.save(function(err) {});
+							res.end("Cannot issue book");
+						else {
+							book.numofcopies = book.numofcopies - 1;
+							book.save(function(err) {
+								res.end("Book have been issued");
+							});	
+						}
 					});
 			});
 		}

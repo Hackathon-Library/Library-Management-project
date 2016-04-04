@@ -64,30 +64,30 @@ router.post('/newbook', function(req, res, next){
 
 router.post('/bookreturn', function(req, res, next){
 
-	var rollnum  = req.body.rollno;
-	var isbnno = req.body.isbn;
 	var deadline = new Date();
 	var numdaystoadd = 30;
 
-	User.findOne({rollno:req.body.rollno}, function(err,user) {
-		var i = 0;
-		for(i = 0; i < user.books.length; i++) {
-			if(user.books[i].ISBN == req.body.isbn) {
-				break;
-			}
-		}
-		delete user.books[i];
-		user.save(function(err) {
-			if(err) {
-				return res.end("Cannot return book");
-			}
-			else {
-				deadline.setDate(user.book.issuedate + numdaystoadd);
-				var fine = Date.today() - deadline;
-				user.fine = fine;
-				return res.render('Bookreturn', {data: user})
-			}
-		})
+	Books.findOne({ISBN:req.body.isbn}, function(err,book) {
+		if(err)
+			return res.end("Cannot return book some internal error occured");
+
+		User.findOne({rollno:req.body.rollno}, function(err,user) {
+			user.books.pull({_id: book.id});
+			user.save(function(err) {
+				if(err) {
+					return res.end("Cannot return book");
+				}
+				else {
+					// deadline.setDate(user.book.issuedate + numdaystoadd);
+					// var fine = Date.today() - deadline;
+					// user.fine = fine;
+					return res.render('BookReturn', {data: user})
+				}
+			})
+		});
+
+		book.numofcopies = book.numofcopies + 1;
+		book.save();
 	});
 });
 

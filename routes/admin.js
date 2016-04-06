@@ -18,17 +18,21 @@ router.post('/bookissue', function(req, res, next){
 				if(err) {
 					res.end("Cannot issue book");
 				}
-					user.books.push(book);
-					user.save(function(err) {
-						if(err)
-							res.end("Cannot issue book");
-						else {
-							book.numofcopies = book.numofcopies - 1;
-							book.save(function(err) {
-								res.end("Book have been issued");
-							});	
-						}
-					});
+				var issuedbooks = {
+					book: book,
+					issuedate: new Date()
+				};
+				user.books.push(issuedbooks);
+				user.save(function(err) {
+					if(err)
+						res.end("Cannot issue book");
+					else {
+						book.numofcopies = book.numofcopies - 1;
+						book.save(function(err) {
+							res.end("Book have been issued");
+						});	
+					}
+				});
 			});
 		}
 	});

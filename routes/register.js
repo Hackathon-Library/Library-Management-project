@@ -5,7 +5,7 @@ var User = require('../app/model/user');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	res.sendfile(path.join(__dirname,'../public/register.html'));
+	res.sendFile(path.join(__dirname,'../public/register.html'));
 });
 
 router.post('/', function(req, res, next){

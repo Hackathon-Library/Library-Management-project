@@ -18,9 +18,11 @@
 	function changetag() {
 		if($("#role").val() == "Teacher") {
 			$("#rollno").text("Teacher_id");
+			$("#exampleInputRollNo").attr("placeholder","Teacher_id");
 		}
 		else {
 			$("#rollno").text("RollNo");
+			$("#exampleInputRollNo").attr("placeholder","RollNo");
 		}
 	}
 	

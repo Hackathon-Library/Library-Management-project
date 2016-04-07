@@ -10,6 +10,7 @@ var mongoose = require('mongoose');
 var login = require('./routes/login');
 var register = require('./routes/register');
 var admin = require('./routes/admin');
+var logout = require('./routes/logout');
 
 mongoose.connect('mongodb://user:user@ds015760.mlab.com:15760/librarymanagement');
 
@@ -31,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', login);
 app.use('/register', register);
 app.use('/admin', admin);
-//app.use('/users', users);
+app.use('/logout', logout);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

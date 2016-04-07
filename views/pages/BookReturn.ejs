@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Book Return Page</title>
+	<% include ../partials/head %>
+
+</head>
+<body class="container">
+
+	<header>
+		<% include ../partials/header %>
+	</header>
+
+	<main>
+		<div class="row">
+			<h2><label for="Book-Return">Book Return</label></h2>
+		</div>
+
+		<div class="row"><h2><label for="name"><%= data.name %></label></h2></div>
+
+		<div class="row"><label for="bookname"><%= data.bookname %></label></div>
+		<div class="row"><label for="fine"><%= data.fine %></label></div>
+
+	</main>
+
+	<footer>
+		<% include ../partials/footer %>
+	</footer>	
+</body>
+</html>

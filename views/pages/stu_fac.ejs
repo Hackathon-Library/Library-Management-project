@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Student Faculty Page</title>
+	<% include ../partials/head %>
+
+</head>
+<body class="container">
+
+	<header>
+		<% include ../partials/header %>
+	</header>
+
+	<main>
+		<div class="row">
+			<h2><label for="login-form">Welcome <%= data.username %></label></h2>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="row">
+					<label for="name"><%= data.name %></label></div>
+					<div class="row"><label for="id"><%= data.rollno %></label></div>
+					<div class="row"><label for="branch"><%= data.branch %></label></div>
+				</div>
+
+
+
+				<div class="pull-right">
+					<img src="#" alt="Mountain View" >
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<label for="search-book">Online Search Book</label>
+		</div>
+		<div class="row">
+			<div>
+				<input type="text" id="Bookname" placeholder="BookName">
+				<input type="text" id="Author" placeholder="AutherName">
+				<button type="submit" class="btn btn-info" >Search</button>
+			</div>
+		</div>
+		<div class="row">
+			<label for="Issued-Book">Issued Books</label>
+		</div>
+		<div class="row">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Issued Books </th>
+						<th>Deadlines</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% data.books.forEach(function(book){%>
+						<tr>
+							<td><%= data.bookname %></td>
+							<td><%= data.Deadline %></td>
+
+						</tr>
+					</tr><%});%>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="row">
+			<button type="submit" class="btn btn-info">Generate Registeration Certificate</button>
+		</div>
+	</main>
+
+	<footer>
+		<% include ../partials/footer %>
+	</footer>
+
+</body>
+</html>

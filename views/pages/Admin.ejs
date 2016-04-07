@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Admin Form</title>
+	<% include ../partials/head %>
+
+</head>
+<body class="container">
+
+	<header>
+		<% include ../partials/header %>
+	</header>
+
+	<main>
+		<div class="row">
+			<h2><label>Welcome Admin</label></h2>
+		</div>
+
+		<form action="/admin/bookreturn" method="POST">
+			<div class="form-group">
+				<div class="col-sm-offset-4 col-sm-4">
+					<label for="exampleInputBookReturn">Book Return</label>
+					<input type="text" name="rollno" class="form-control" id="exampleInputRollNo" placeholder="RollNo">
+					<input type="text" name="isbn" class="form-control" id="exampleInputISBN" placeholder="Book-ISBN">
+					<button type="submit" class="btn btn-info">Submit</button>
+				</div>
+			</div>
+		</form>
+		<form action="/admin/bookissue" method="POST">
+			<div class="form-group">
+				<div class="col-sm-offset-4 col-sm-4">
+					<label for="exampleInputBookReturn">Book Issue</label>
+					<input type="text" name="rollno" class="form-control" id="exampleInputRollNo" placeholder="RollNo">
+					<input type="text" name="isbn" class="form-control" id="exampleInputISBN" placeholder="Book-ISBN">
+					<button type="submit" class="btn btn-info">Submit</button>
+				</div><br/>
+			</div>
+		</form>
+		<form action="/admin/newbook" method="POST">
+			<div class="form-group">
+				<div class="col-sm-offset-4 col-sm-4">
+					<label for="exampleInputBookReturn">New Book</label>
+					<input type="text" name="bookname" class="form-control" id="exampleInputBookname" placeholder="Book Name">
+					<input type="text" name="author" class="form-control" id="exampleInputAuthor" placeholder="Author">
+					<input type="text" name="isbn" class="form-control" id="exampleInputISBN" placeholder="Book-ISBN">
+					<input type="text" name="copies" class="form-control" id="exampleInputCopies" placeholder="NumofCopies">
+					<button type="submit" class="btn btn-info">Submit</button>
+				</div><br/>
+			</div>
+		</form>
+	</main>
+
+	<footer>
+		<% include ../partials/footer %>
+	</footer>
+
+</body>
+</html>

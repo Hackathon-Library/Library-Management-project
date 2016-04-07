@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Book Issued</title>
+	<% include ../partials/head %>
+
+</head>
+<body class="container">
+
+	<header>
+		<% include ../partials/header %>
+	</header>
+	
+	<main>
+		<div class="row">
+			<h2><label>Book Issued</label></h2>
+		</div>
+		<div class="row"><label for="bookname"><%data.bookname%></label></div>
+		<div class="row"><label for="isbn"><%data.ISBN%></label></div>
+		<div class="row"><label for="author"><%data.authorname%></label></div>
+		<div class="row"><label for="issued date"><%data.issueddate%></label></div>
+		<div class="row"><label for="deadline">you hava to submit till <%data.Deadline%></label></div>
+	</main>
+
+	<footer>
+		<% include ../partials/footer %>
+	</footer>
+
+</body>
+</html>

@@ -85,7 +85,7 @@ router.post('/bookreturn', function(req, res, next){
 					// deadline.setDate(user.book.issuedate + numdaystoadd);
 					// var fine = Date.today() - deadline;
 					// user.fine = fine;
-					return res.render('BookReturn', {data: user})
+					return res.render('pages/BookReturn', {data: user})
 				}
 			})
 		});

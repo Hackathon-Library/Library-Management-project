@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Book List Page</title>
+	<% include ../partials/head %>
+
+</head>
+<body class="container">
+
+	<header>
+		<% include ../partials/header %>
+	</header>
+
+	<main>
+		<div class="row">
+			<h2><label for="Book-list">Book List</label></h2>
+		</div>
+		<div class="row">
+			<table class="table table-bordered" style="margin:0px auto; width:600px" align="center">
+				<thead>
+					<tr>
+						<th>Book ISBN</th>
+						<th>Book Name </th>
+						<th>Book Author</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% data.forEach(function(data){%>
+						<tr>
+							<td><%data.ISBN%></td>
+							<td><%data.bookname%></td>
+							<td><%data.authorname%></td>
+						</tr>
+
+						<%});%>
+					</tbody>
+				</table>
+			</div>
+		</main>
+
+		<footer>
+			<% include ../partials/footer %>
+		</footer>
+	</body>
+	</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>New Book</title>
+	<% include ../partials/head %>
+
+</head>
+<body class="container">
+
+	<header>
+		<% include ../partials/header %>
+	</header>
+	
+	<main>
+		<div class="row">
+			<h2><label>New Books</label></h2>
+		</div>
+		<div class="row"><label for="bookname"><%= data.bookname %></label></div>
+		<div class="row"><label for="isbn"><%= data.ISBN %></label></div>
+		<div class="row"><label for="authorname"><%= data.authorname %></label></div>
+		<div class="row"><label for="#copies"><%= data.numofcopies %></label></div>
+	</main>
+
+	<footer>
+		<% include ../partials/footer %>
+	</footer>
+
+</body>
+</html>

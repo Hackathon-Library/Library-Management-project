@@ -15,9 +15,9 @@ router.get('/', function(req, res, next) {
 			if(err)
 				return res.send(err);
 			if(user.role=="admin")
-				res.render('Admin', {data:user});
+				res.render('pages/Admin', {data:user});
 			else
-				res.render('stu_fac', {data:user});
+				res.render('pages/stu_fac', {data:user});
 		});
 	}
 	else
@@ -37,9 +37,9 @@ router.post('/', function(req, res, next){
 			session.email = req.body.email;
 
 			if(user.role=="admin")
-				res.render('Admin', {data:user});
+				res.render('pages/Admin', {data:user});
 			else
-				res.render('stu_fac', {data:user});
+				res.render('pages/stu_fac', {data:user});
 		}
 		else{
 			res.sendFile(path.join(__dirname, '../public/login.html'));

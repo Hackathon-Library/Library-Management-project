@@ -10,15 +10,11 @@ router.get('/', function(req, res, next) {
 
 	session = req.session;
 	console.log(session);
-	if(session.email) {
-		User.findOne({email:session.email}, function(err,user){
-			if(err)
-				return res.send(err);
-			if(user.role=="admin")
-				res.render('pages/Admin', {data:user});
-			else
-				res.render('pages/stu_fac', {data:user});
-		});
+	if(session.user) {
+		if(session.user.role=="admin")
+			res.render('pages/Admin', {data:session.user});
+		else
+			res.render('pages/stu_fac', {data:session.user});
 	}
 	else
 		res.sendFile(path.join(__dirname, '../public/login.html'));
@@ -34,7 +30,7 @@ router.post('/', function(req, res, next){
 			return res.send(err);
 		if(req.body.password == user.password){
 
-			session.email = req.body.email;
+			session.user = user;
 
 			if(user.role=="admin")
 				res.render('pages/Admin', {data:user});

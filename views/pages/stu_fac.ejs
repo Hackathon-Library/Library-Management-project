@@ -2,7 +2,7 @@
 <html>
 <head>
 
-	<title>Student Faculty Page</title>
+	<title><%= data.name %> Home's</title>
 	<% include ../partials/head %>
 
 </head>
@@ -14,7 +14,7 @@
 
 	<main>
 		<div class="row">
-			<h2><label for="login-form">Welcome <%= data.username %></label></h2>
+			<h2><label for="login-form">Welcome <%= data.name %></label></h2>
 		</div>
 		<div class="row">
 			<div class="col-sm-12">
@@ -38,7 +38,7 @@
 			<div>
 				<input type="text" id="Bookname" placeholder="BookName">
 				<input type="text" id="Author" placeholder="AutherName">
-				<button type="submit" class="btn btn-info" >Search</button>
+				<button type="submit" class="btn btn-info">Search</button>
 			</div>
 		</div>
 		<div class="row">
@@ -53,13 +53,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% data.books.forEach(function(book){%>
+					<% books.forEach(function(book){%>
 						<tr>
-							<td><%= data.bookname %></td>
-							<td><%= data.Deadline %></td>
-
+							<td><%= book.bookname %></td>
+							<td>asjkdhjasdj</td>
 						</tr>
-					</tr><%});%>
+					<% }); %>
 				</tbody>
 			</table>
 		</div>

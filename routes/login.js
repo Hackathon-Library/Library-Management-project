@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var User = require('../app/model/user');
+var Book = require('../app/model/Books');
 
 var session;
 
@@ -9,7 +10,7 @@ var session;
 router.get('/', function(req, res, next) {
 
 	session = req.session;
-	console.log(session);
+	
 	if(session.user) {
 		if(session.user.role=="admin")
 			res.render('pages/Admin', {data:session.user});
@@ -34,8 +35,18 @@ router.post('/', function(req, res, next){
 
 			if(user.role=="admin")
 				res.render('pages/Admin', {data:user});
-			else
-				res.render('pages/stu_fac', {data:user});
+			else {
+				var arr = [];
+
+				for(i = 0; i < user.books.length; i++)
+					arr[i] = user.books[i].book;
+
+				Book.find({'_id': {$in: arr}}, function(err,books) {
+					if(err)
+						return res.end(err)
+					res.render('pages/stu_fac', {data:user, books:books});
+				});
+			}
 		}
 		else{
 			res.sendFile(path.join(__dirname, '../public/login.html'));

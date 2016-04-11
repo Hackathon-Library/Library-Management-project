@@ -14,9 +14,11 @@ router.get('/', function(req, res, next) {
 	
 	if(session.user) {
 		if(session.user.role=="admin")
-			res.render('pages/Admin', {data:session.user,books:session.books});
-		else
-			res.render('pages/stu_fac', {data:session.user});
+			res.render('pages/Admin', {data:session.user});
+		else {
+			session.books.deadline = session.deadline
+			res.render('pages/stu_fac', {data:session.user,books:session.books});
+		}
 	}
 	else
 		res.sendFile(path.join(__dirname, '../public/login.html'));
@@ -51,6 +53,7 @@ router.post('/', function(req, res, next){
 						return res.end(err)
 					books.deadline = deadline
 					session.books = books
+					session.deadline = deadline
 					res.render('pages/stu_fac', {data:user, books:books});
 				});
 			}

@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 	
 	if(session.user) {
 		if(session.user.role=="admin")
-			res.render('pages/Admin', {data:session.user});
+			res.render('pages/Admin', {data:session.user,books:session.books});
 		else
 			res.render('pages/stu_fac', {data:session.user});
 	}
@@ -44,6 +44,7 @@ router.post('/', function(req, res, next){
 				Book.find({'_id': {$in: arr}}, function(err,books) {
 					if(err)
 						return res.end(err)
+					session.books = books
 					res.render('pages/stu_fac', {data:user, books:books});
 				});
 			}

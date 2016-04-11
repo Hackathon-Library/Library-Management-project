@@ -3,6 +3,7 @@ var router = express.Router();
 var path = require('path');
 var User = require('../app/model/user');
 var Book = require('../app/model/Books');
+var moment = require('moment')
 
 var session;
 
@@ -36,14 +37,19 @@ router.post('/', function(req, res, next){
 			if(user.role=="admin")
 				res.render('pages/Admin', {data:user});
 			else {
-				var arr = [];
 
-				for(i = 0; i < user.books.length; i++)
+				var arr = [];
+				var deadline = [];
+
+				for(i = 0; i < user.books.length; i++) {
 					arr[i] = user.books[i].book;
+					deadline[i] = moment(user.books[i].issuedate).add(30, 'days').calendar();
+				}
 
 				Book.find({'_id': {$in: arr}}, function(err,books) {
 					if(err)
 						return res.end(err)
+					books.deadline = deadline
 					session.books = books
 					res.render('pages/stu_fac', {data:user, books:books});
 				});

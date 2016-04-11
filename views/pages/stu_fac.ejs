@@ -53,10 +53,10 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% books.forEach(function(book){%>
+					<% books.forEach(function(book,index){%>
 						<tr>
 							<td><%= book.bookname %></td>
-							<td>asjkdhjasdj</td>
+							<td><%= books["deadline"][index] %></td>
 						</tr>
 					<% }); %>
 				</tbody>

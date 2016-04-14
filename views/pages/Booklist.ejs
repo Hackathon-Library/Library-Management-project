@@ -14,7 +14,7 @@
 
 	<main>
 		<div class="row">
-			<h2><label for="Book-list">Book List</label></h2>
+			<h2><label>Book List</label></h2>
 		</div>
 		<div class="row">
 			<table class="table table-bordered" style="margin:0px auto; width:600px" align="center">
@@ -23,24 +23,28 @@
 						<th>Book ISBN</th>
 						<th>Book Name </th>
 						<th>Book Author</th>
+						<th>Available Copies</th>
 					</tr>
 				</thead>
 				<tbody>
-					<% data.forEach(function(data){%>
+					<% data.forEach(function(book){%>
 						<tr>
-							<td><%data.ISBN%></td>
-							<td><%data.bookname%></td>
-							<td><%data.authorname%></td>
+							<td><%= book.ISBN %></td>
+							<td><%= book.bookname %></td>
+							<td><%= book.authorname %></td>
+							<td><%= book.numofcopies %></td>
 						</tr>
 
-						<%});%>
-					</tbody>
-				</table>
-			</div>
-		</main>
+					<%});%>
+				</tbody>
+			</table>
+		</div>
+	</main>
 
-		<footer>
-			<% include ../partials/footer %>
-		</footer>
-	</body>
-	</html>
+	<hr />
+
+	<footer>
+		<% include ../partials/footer %>
+	</footer>
+</body>
+</html>

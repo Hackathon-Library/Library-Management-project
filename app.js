@@ -20,6 +20,7 @@ var register = require('./routes/register');
 var admin = require('./routes/admin');
 var logout = require('./routes/logout');
 var user = require('./routes/user');
+var forgot = require('./routes/forgot');
 
 mongoose.connect(process.env.DATABASE_URL);
 
@@ -42,7 +43,8 @@ app.use('/', login);
 app.use('/register', register);
 app.use('/admin', admin);
 app.use('/logout', logout);
-app.use('/user', user)
+app.use('/user', user);
+app.use('/forgot',forgot);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

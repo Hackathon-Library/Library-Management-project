@@ -20,6 +20,7 @@ router.post('/', function(req,res,next) {
 		},
 		function(token, done) {
 			console.log(process.env.USERNAME);
+			res.writeHead(200);
 			User.findOne({ email: req.body.email }, function(err, user) {
 				if (!user) {
 					req.flash('error', 'No account with that email address exists.');

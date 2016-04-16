@@ -32,7 +32,7 @@ router.post('/', function(req, res, next){
 	User.findOne({email:req.body.email}, function(err,user){
 		if(err)
 			return res.send(err);
-		if(req.body.password == user.password){
+		if(user.comparePassword(req.body.password)){
 
 			session.user = user;
 

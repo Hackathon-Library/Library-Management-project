@@ -34,15 +34,15 @@ router.post('/', function(req,res,next) {
 		},
 		function(token, user, done) {
 			var smtpTransport = nodemailer.createTransport('SMTP', {
-				service: 'Gmail',
+				service: 'Hotmail',
 				auth: {
-					user: 'fakehimanshusingh',
+					user: 'fakehimanshusingh@outlook.com',
 					pass: 'qweasdzxc123!@#'
 				}
 			});
 			var mailOptions = {
 				to: user.email,
-				from: 'fakehimanshusingh@gmail.com',
+				from: 'passwordreset@outlook.com',
 				subject: 'NITH Library Login Password Reset',
 				text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
 				'Please click on the following link, or paste this into your browser to complete the process:\n\n' +

@@ -36,7 +36,7 @@ router.post('/', function(req,res,next) {
 		},
 		function(token, user, done) {
 			var option = {
-				service: 'gamil'
+				service: 'gamil',
 				auth: {
 					user: process.env.USERNAME,
 					pass: process.env.PASSWORD

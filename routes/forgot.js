@@ -5,7 +5,6 @@ var User = require('../app/model/user');
 var crypto = require('crypto');
 var async = require('async');
 var nodemailer = require('nodemailer');
-var smtpTransport = require('nodemailer-smtp-transport');
 
 router.get('/', function(req,res,next) {
 	res.render('pages/forgot');
@@ -20,7 +19,6 @@ router.post('/', function(req,res,next) {
 			});
 		},
 		function(token, done) {
-			console.log(process.env.PASSWORD);
 			User.findOne({ email: req.body.email }, function(err, user) {
 				if (!user) {
 					req.flash('error', 'No account with that email address exists.');
@@ -35,14 +33,13 @@ router.post('/', function(req,res,next) {
 			});
 		},
 		function(token, user, done) {
-			var option = {
-				service: 'gamil',
+			var smtpTransport = nodemailer.createTransport('SMTP', {
+				service: 'Gmail',
 				auth: {
 					user: process.env.USERNAME,
 					pass: process.env.PASSWORD
 				}
-			};
-			var smtpTransport = nodemailer.createTransport(smtpTransport(options));
+			});
 			var mailOptions = {
 				to: user.email,
 				from: 'passwordreset@demo.com',
@@ -58,7 +55,7 @@ router.post('/', function(req,res,next) {
 			});
 		}
 		], function(err) {
-			if (err) return next(err,response);
+			if (err) return next(err);
 			res.redirect('/forgot');
 		});
 });

@@ -82,16 +82,16 @@ router.post('/bookreturn', function(req, res, next){
 					break;
 			}
 			var deadline = moment(user.books[i].issuedate).add(30, 'days');
-			user.books.pull({_id: book.id});
+			console.log(book.id);
+			console.log(user.books);
+			user.books.pull({_id: user.books[i].id});
 			user.save(function(err) {
 				if(err) {
 					return res.end("Cannot return book");
 				}
 				else {
-					if(Date.now() > deadline) {
-						var fine = moment(Date.now()).diff(deadline, 'days');
-						user.fine = fine;
-					}
+					if(Date.now() > deadline)
+						user.fine = moment(Date.now()).diff(deadline, 'days');
 					else
 						user.fine = 0;
 					return res.render('pages/BookReturn', {data: user})

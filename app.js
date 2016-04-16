@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 var dotenv = require('dotenv');
 var flash = require('express-flash');
 
-dotenv.config({silent:true});
+// dotenv.config({silent:true});
 
 var login = require('./routes/login');
 var register = require('./routes/register');

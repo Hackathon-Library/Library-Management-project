@@ -66,9 +66,7 @@ router.get('/reset/:token', function(req,res,next) {
 			req.flash('error', 'Password reset token is invalid or has expired.');
 			return res.redirect('/forgot');
 		}
-		res.render('pages/reset', {
-			data: req.user
-		});
+		res.render('pages/reset');
 	});
 });
 

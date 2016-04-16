@@ -36,8 +36,8 @@ router.post('/', function(req,res,next) {
 			var smtpTransport = nodemailer.createTransport('SMTP', {
 				service: 'Hotmail',
 				auth: {
-					user: 'fakehimanshusingh@outlook.com',
-					pass: 'qweasdzxc123!@#'
+					user: process.env.USERNAME,
+					pass: process.env.PASSWORD
 				}
 			});
 			var mailOptions = {
@@ -90,7 +90,7 @@ router.post('/reset/:token', function(req, res) {
 		},
 		function(user, done) {
 			var smtpTransport = nodemailer.createTransport('SMTP', {
-				service: 'Gmail',
+				service: 'Hotmail',
 				auth: {
 					user: process.env.USERNAME,
 					pass: process.env.PASSWORD

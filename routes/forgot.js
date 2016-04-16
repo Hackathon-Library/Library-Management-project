@@ -5,6 +5,7 @@ var User = require('../app/model/user');
 var crypto = require('crypto');
 var async = require('async');
 var nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
 
 router.get('/', function(req,res,next) {
 	res.render('pages/forgot');
@@ -34,13 +35,14 @@ router.post('/', function(req,res,next) {
 			});
 		},
 		function(token, user, done) {
-			var smtpTransport = nodemailer.createTransport('SMTP', {
-				service: 'Gmail',
+			var option = {
+				service: 'gamil'
 				auth: {
 					user: process.env.USERNAME,
 					pass: process.env.PASSWORD
 				}
-			});
+			};
+			var smtpTransport = nodemailer.createTransport(smtpTransport(options));
 			var mailOptions = {
 				to: user.email,
 				from: 'passwordreset@demo.com',
@@ -56,7 +58,7 @@ router.post('/', function(req,res,next) {
 			});
 		}
 		], function(err) {
-			if (err) return next(err);
+			if (err) return next(err,response);
 			res.redirect('/forgot');
 		});
 });

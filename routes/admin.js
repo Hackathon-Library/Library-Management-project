@@ -3,6 +3,7 @@ var router = express.Router();
 var path = require('path');
 var Books = require('../app/model/Books')
 var User = require('../app/model/user');
+var moment = require('moment');
 
 router.post('/bookissue', function(req, res, next){
 	var rollno = req.body.rollno;
@@ -76,15 +77,23 @@ router.post('/bookreturn', function(req, res, next){
 			return res.end("Cannot return book some internal error occured");
 
 		User.findOne({rollno:req.body.rollno}, function(err,user) {
+			for (var i = user.books.length - 1; i >= 0; i--) {
+				if(user.books[i].book == book.id)
+					break;
+			}
+			var deadline = moment(user.books[i].issuedate).add(30, 'days');
 			user.books.pull({_id: book.id});
 			user.save(function(err) {
 				if(err) {
 					return res.end("Cannot return book");
 				}
 				else {
-					// deadline.setDate(user.book.issuedate + numdaystoadd);
-					// var fine = Date.today() - deadline;
-					// user.fine = fine;
+					if(Date.now() > deadline) {
+						var fine = moment(Date.now()).diff(deadline, 'days');
+						user.fine = fine;
+					}
+					else
+						user.fine = 0;
 					return res.render('pages/BookReturn', {data: user})
 				}
 			})

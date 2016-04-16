@@ -28,7 +28,9 @@ router.post('/', function(req, res, next){
 		}
 
 		// return a message
-		res.send("<html><head><title>registered</title></head><body>User created<br /><a href='/'>back to login page</a></body></html>");
+		req.flash("success","A user is created!")
+		res.redirect('/')
+		// res.send("<html><head><title>registered</title></head><body>User created<br /><a href='/'>back to login page</a></body></html>");
 	});
 });
 

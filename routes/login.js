@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
 		}
 	}
 	else
-		res.sendFile(path.join(__dirname, '../public/login.html'));
+		res.render('pages/login');
 
 });
 
@@ -59,7 +59,8 @@ router.post('/', function(req, res, next){
 			}
 		}
 		else{
-			res.sendFile(path.join(__dirname, '../public/login.html'));
+			req.flash("error","Username or password is wrong!")
+			res.redirect('/');
 		}
 	});
 });

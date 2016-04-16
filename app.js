@@ -6,6 +6,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var dotenv = require('dotenv');
+
+dotenv.config({silent:true});
 
 var login = require('./routes/login');
 var register = require('./routes/register');
@@ -13,7 +16,7 @@ var admin = require('./routes/admin');
 var logout = require('./routes/logout');
 var user = require('./routes/user');
 
-mongoose.connect('mongodb://user:user@ds015760.mlab.com:15760/librarymanagement');
+mongoose.connect(process.env.DATABASE_URL);
 
 var app = express();
 
